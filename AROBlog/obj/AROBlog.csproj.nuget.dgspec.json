@@ -1,0 +1,471 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\Documents\\Codes\\test\\BlogTest\\AROBlog\\AROBlog.csproj": {}
+  },
+  "projects": {
+    "D:\\Documents\\Codes\\test\\BlogTest\\AROBlog.DAL\\AROBlog.DAL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Documents\\Codes\\test\\BlogTest\\AROBlog.DAL\\AROBlog.DAL.csproj",
+        "projectName": "AROBlog.DAL",
+        "projectPath": "D:\\Documents\\Codes\\test\\BlogTest\\AROBlog.DAL\\AROBlog.DAL.csproj",
+        "packagesPath": "D:\\Program Files\\VS 2022\\NuGet\\Packages",
+        "outputPath": "D:\\Documents\\Codes\\test\\BlogTest\\AROBlog.DAL\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\12466\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\Documents\\Codes\\test\\BlogTest\\AROBlog.IDAL\\AROBlog.IDAL.csproj": {
+                "projectPath": "D:\\Documents\\Codes\\test\\BlogTest\\AROBlog.IDAL\\AROBlog.IDAL.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Documents\\Codes\\test\\BlogTest\\AROBlog.Data\\AROBlog.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Documents\\Codes\\test\\BlogTest\\AROBlog.Data\\AROBlog.Data.csproj",
+        "projectName": "AROBlog.Data",
+        "projectPath": "D:\\Documents\\Codes\\test\\BlogTest\\AROBlog.Data\\AROBlog.Data.csproj",
+        "packagesPath": "D:\\Program Files\\VS 2022\\NuGet\\Packages",
+        "outputPath": "D:\\Documents\\Codes\\test\\BlogTest\\AROBlog.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\12466\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.5, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Documents\\Codes\\test\\BlogTest\\AROBlog.DTO\\AROBlog.DTO.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Documents\\Codes\\test\\BlogTest\\AROBlog.DTO\\AROBlog.DTO.csproj",
+        "projectName": "AROBlog.DTO",
+        "projectPath": "D:\\Documents\\Codes\\test\\BlogTest\\AROBlog.DTO\\AROBlog.DTO.csproj",
+        "packagesPath": "D:\\Program Files\\VS 2022\\NuGet\\Packages",
+        "outputPath": "D:\\Documents\\Codes\\test\\BlogTest\\AROBlog.DTO\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\12466\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\Documents\\Codes\\test\\BlogTest\\AROBlog.Data\\AROBlog.Data.csproj": {
+                "projectPath": "D:\\Documents\\Codes\\test\\BlogTest\\AROBlog.Data\\AROBlog.Data.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Documents\\Codes\\test\\BlogTest\\AROBlog.IBLL\\AROBlog.IBLL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Documents\\Codes\\test\\BlogTest\\AROBlog.IBLL\\AROBlog.IBLL.csproj",
+        "projectName": "AROBlog.IBLL",
+        "projectPath": "D:\\Documents\\Codes\\test\\BlogTest\\AROBlog.IBLL\\AROBlog.IBLL.csproj",
+        "packagesPath": "D:\\Program Files\\VS 2022\\NuGet\\Packages",
+        "outputPath": "D:\\Documents\\Codes\\test\\BlogTest\\AROBlog.IBLL\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\12466\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\Documents\\Codes\\test\\BlogTest\\AROBlog.DTO\\AROBlog.DTO.csproj": {
+                "projectPath": "D:\\Documents\\Codes\\test\\BlogTest\\AROBlog.DTO\\AROBlog.DTO.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Documents\\Codes\\test\\BlogTest\\AROBlog.IDAL\\AROBlog.IDAL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Documents\\Codes\\test\\BlogTest\\AROBlog.IDAL\\AROBlog.IDAL.csproj",
+        "projectName": "AROBlog.IDAL",
+        "projectPath": "D:\\Documents\\Codes\\test\\BlogTest\\AROBlog.IDAL\\AROBlog.IDAL.csproj",
+        "packagesPath": "D:\\Program Files\\VS 2022\\NuGet\\Packages",
+        "outputPath": "D:\\Documents\\Codes\\test\\BlogTest\\AROBlog.IDAL\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\12466\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\Documents\\Codes\\test\\BlogTest\\AROBlog.Data\\AROBlog.Data.csproj": {
+                "projectPath": "D:\\Documents\\Codes\\test\\BlogTest\\AROBlog.Data\\AROBlog.Data.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Documents\\Codes\\test\\BlogTest\\AROBlog\\AROBlog.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Documents\\Codes\\test\\BlogTest\\AROBlog\\AROBlog.csproj",
+        "projectName": "AROBlog",
+        "projectPath": "D:\\Documents\\Codes\\test\\BlogTest\\AROBlog\\AROBlog.csproj",
+        "packagesPath": "D:\\Program Files\\VS 2022\\NuGet\\Packages",
+        "outputPath": "D:\\Documents\\Codes\\test\\BlogTest\\AROBlog\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\12466\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\Documents\\Codes\\test\\BlogTest\\AROBlog.Data\\AROBlog.Data.csproj": {
+                "projectPath": "D:\\Documents\\Codes\\test\\BlogTest\\AROBlog.Data\\AROBlog.Data.csproj"
+              },
+              "D:\\Documents\\Codes\\test\\BlogTest\\AROBlog.IBLL\\AROBlog.IBLL.csproj": {
+                "projectPath": "D:\\Documents\\Codes\\test\\BlogTest\\AROBlog.IBLL\\AROBlog.IBLL.csproj"
+              },
+              "D:\\Documents\\Codes\\test\\BlogTest\\UserManager\\AROBlog.BLL.csproj": {
+                "projectPath": "D:\\Documents\\Codes\\test\\BlogTest\\UserManager\\AROBlog.BLL.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.5, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[6.0.5, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Documents\\Codes\\test\\BlogTest\\UserManager\\AROBlog.BLL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Documents\\Codes\\test\\BlogTest\\UserManager\\AROBlog.BLL.csproj",
+        "projectName": "AROBlog.BLL",
+        "projectPath": "D:\\Documents\\Codes\\test\\BlogTest\\UserManager\\AROBlog.BLL.csproj",
+        "packagesPath": "D:\\Program Files\\VS 2022\\NuGet\\Packages",
+        "outputPath": "D:\\Documents\\Codes\\test\\BlogTest\\UserManager\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\12466\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\Documents\\Codes\\test\\BlogTest\\AROBlog.DAL\\AROBlog.DAL.csproj": {
+                "projectPath": "D:\\Documents\\Codes\\test\\BlogTest\\AROBlog.DAL\\AROBlog.DAL.csproj"
+              },
+              "D:\\Documents\\Codes\\test\\BlogTest\\AROBlog.IBLL\\AROBlog.IBLL.csproj": {
+                "projectPath": "D:\\Documents\\Codes\\test\\BlogTest\\AROBlog.IBLL\\AROBlog.IBLL.csproj"
+              },
+              "D:\\Documents\\Codes\\test\\BlogTest\\AROBlog.IDAL\\AROBlog.IDAL.csproj": {
+                "projectPath": "D:\\Documents\\Codes\\test\\BlogTest\\AROBlog.IDAL\\AROBlog.IDAL.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Markdig": {
+              "target": "Package",
+              "version": "[0.30.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

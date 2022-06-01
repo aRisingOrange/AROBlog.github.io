@@ -1,0 +1,15 @@
+D:\Documents\Codes\test\BlogTest\AROBlog.IDAL\bin\Debug\net6.0\AROBlog.IDAL.deps.json
+D:\Documents\Codes\test\BlogTest\AROBlog.IDAL\bin\Debug\net6.0\AROBlog.IDAL.dll
+D:\Documents\Codes\test\BlogTest\AROBlog.IDAL\bin\Debug\net6.0\AROBlog.IDAL.pdb
+D:\Documents\Codes\test\BlogTest\AROBlog.IDAL\bin\Debug\net6.0\AROBlog.Data.dll
+D:\Documents\Codes\test\BlogTest\AROBlog.IDAL\bin\Debug\net6.0\AROBlog.Data.pdb
+D:\Documents\Codes\test\BlogTest\AROBlog.IDAL\obj\Debug\net6.0\AROBlog.IDAL.csproj.AssemblyReference.cache
+D:\Documents\Codes\test\BlogTest\AROBlog.IDAL\obj\Debug\net6.0\AROBlog.IDAL.GeneratedMSBuildEditorConfig.editorconfig
+D:\Documents\Codes\test\BlogTest\AROBlog.IDAL\obj\Debug\net6.0\AROBlog.IDAL.AssemblyInfoInputs.cache
+D:\Documents\Codes\test\BlogTest\AROBlog.IDAL\obj\Debug\net6.0\AROBlog.IDAL.AssemblyInfo.cs
+D:\Documents\Codes\test\BlogTest\AROBlog.IDAL\obj\Debug\net6.0\AROBlog.IDAL.csproj.CoreCompileInputs.cache
+D:\Documents\Codes\test\BlogTest\AROBlog.IDAL\obj\Debug\net6.0\AROBlog.IDAL.csproj.CopyComplete
+D:\Documents\Codes\test\BlogTest\AROBlog.IDAL\obj\Debug\net6.0\AROBlog.IDAL.dll
+D:\Documents\Codes\test\BlogTest\AROBlog.IDAL\obj\Debug\net6.0\refint\AROBlog.IDAL.dll
+D:\Documents\Codes\test\BlogTest\AROBlog.IDAL\obj\Debug\net6.0\AROBlog.IDAL.pdb
+D:\Documents\Codes\test\BlogTest\AROBlog.IDAL\obj\Debug\net6.0\ref\AROBlog.IDAL.dll

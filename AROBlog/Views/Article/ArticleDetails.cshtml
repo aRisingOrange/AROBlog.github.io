@@ -1,0 +1,76 @@
+﻿@model AROBlog.DTO.ArticleDTO
+
+@{
+    ViewData["Title"] = "ArticleDetails";
+}
+
+@section head{
+     <link rel="stylesheet" href="~/editor.md-master/css/editormd.preview.min.css" />
+    <style>
+        .post-content {
+            padding: 0;
+            font-size: 1.2em;
+        }
+    </style>
+}
+
+<h2>ArticleDetails</h2>
+
+<div class="container">
+    <h4>ArticleDTO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+            @{
+            string a = "1";
+        }
+        <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+    
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateTime)
+        </dt>
+        <dd>
+            
+            @Html.DisplayFor(model => model.CreateTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StoragePath)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StoragePath)
+        </dd>
+    </dl>
+    <!--将md文档渲染出来-->
+      <div id="test-editormd-view" class="post-content">
+                <textarea id="append-test" style="display:none;">@Model.Content</textarea>
+      </div>
+
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>
+@section bottom{
+    <script  src="~/editor.md-master/examples/js/jquery.min.js"></script>
+     <script src="~/editor.md-master/lib/marked.min.js"></script>
+     <script src="~/editor.md-master/lib/prettify.min.js"></script>
+
+        <script src="~/editor.md-master/lib/raphael.min.js"></script>
+        <script src="~/editor.md-master/lib/underscore.min.js"></script>
+        <script src="~/editor.md-master/lib/sequence-diagram.min.js"></script>
+        <script src="~/editor.md-master/lib/flowchart.min.js"></script>
+        <script src="~/editor.md-master/lib/jquery.flowchart.min.js"></script>
+        <script src="~/editor.md-master/editormd.min.js"></script>
+    <script src="~/js/blog-post.js"></script>
+
+}

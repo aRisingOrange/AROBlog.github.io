@@ -1,0 +1,60 @@
+﻿@model AROBlog.Models.BlogViewModels.CreateArticleViewModel
+
+@{
+    ViewData["Title"] = "PostArticle";
+}
+
+<h2>PostArticle</h2>
+
+<h4>CreateArticleViewModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="PostArticle" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <!--这一部分少了之后，viewbag的值为空 👇 -->
+     @*       <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Path" class="control-label"></label>
+                <input asp-for="Path" class="form-control" />
+                <span asp-validation-for="Path" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="Summary" class="control-label"></label>
+                <input asp-for="Summary" class="form-control" />
+                <span asp-validation-for="Summary" class="text-danger"></span>
+            </div>
+             <!--这一部分少了之后，viewbag的值为空 👆 -->
+            <div class="form-group">
+                <label asp-for="CategoryIds" class="control-label"></label>
+                <ul>
+                    @foreach (var categoryItem in ViewBag.CategoryIds)
+                    {
+                        <li class="categoryIds"><input type="checkbox" name="CategoryIds" value="@categoryItem.Id" />@categoryItem.CategoryName </li>
+                    }
+                </ul>
+            </div>
+
+            <div class="form-group">
+                <input type="file" name="file" />
+                </div>
+
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

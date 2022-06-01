@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Markdig" Version="0.30.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AROBlog.DAL\AROBlog.DAL.csproj" />
+    <ProjectReference Include="..\AROBlog.IBLL\AROBlog.IBLL.csproj" />
+    <ProjectReference Include="..\AROBlog.IDAL\AROBlog.IDAL.csproj" />
+  </ItemGroup>
+
+</Project>
