@@ -1,4 +1,5 @@
-﻿using AROBlog.Filter;
+﻿using AROBlog.BLL;
+using AROBlog.Filter;
 using AROBlog.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -14,9 +15,12 @@ namespace AROBlog.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public async Task< IActionResult> Index()
         {
-            return View();
+            ViewBag.CategoryIds = await new ArticleManager().GetAllCategories();
+            var articleMgr = new ArticleManager();
+            var articles = await articleMgr.GetAllArticles();
+            return View(articles);
         }
         [AROBlogAuth]
         public IActionResult Privacy()

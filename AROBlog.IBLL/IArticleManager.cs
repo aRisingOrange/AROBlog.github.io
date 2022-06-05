@@ -16,17 +16,18 @@ namespace AROBlog.IBLL
         Task CreateCategory(string name, Guid userId);
 
         Task<List<CategoryDTO>> GetAllCategories(Guid userId);
-
+        Task<List<CategoryDTO>> GetAllCategories();
         Task<List<ArticleDTO>> GetAllArticlesByUserId(Guid userId, int pageIndex, int pageSize);
+        Task<List<ArticleDTO>> GetAllArticles();
         /// <summary>
         /// 获取总页码数
         /// </summary>
         /// <param name="userId"></param>
         /// <returns></returns>
         Task<int> GetDataCount(Guid userId);
+        Task<int> GetDataCount();
 
-
-        Task<List<ArticleDTO>> GetAllArticlesByAccount(string account);
+        //Task<List<ArticleDTO>> GetAllArticlesByAccount(string account);
 
         Task<List<ArticleDTO>> GetAllArticlesByCategoryId(Guid categoryId);
 

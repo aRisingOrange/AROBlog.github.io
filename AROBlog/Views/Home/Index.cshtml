@@ -1,8 +1,169 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model IEnumerable<AROBlog.DTO.ArticleDTO>
+<!--
+    - google font link
+  -->
+<link href="https://fonts.googleapis.com/css?family=Manrope:200,300,regular,500,600,700,800" rel="stylesheet" />
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<!-- ***** Main Banner Area Start ***** -->
+<section class="section main-banner" id="top" data-section="section1">
+    <video autoplay muted loop id="bg-video">
+        <source src="~/assets/images/Whale-Breach.mp4" type="video/mp4" />
+    </video>
+    <div class="video-overlay header-text">
+        <div class="caption">
+            <h6>aRisingOrange's Blog</h6>
+            <h2><em>你好！</em> 很高兴见到你</h2>
+
+            <div class="scroll-to-section">
+                <a href="#section2">Discover more</a>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ***** Main Banner Area End ***** -->
+<div class="contain-all">
+    <div class="mycard" id="card">
+        <div class="container">
+            <!--头像和名字-->
+            <div class="icon">
+                <img src="~/assets/images/author-01.png" />
+                <h4>探头的橘子</h4>
+            </div>
+            <!--文章总数-->
+            <div class="articles">
+                <h6>99</h6>
+                <h5>Articles</h5>
+            </div>
+            <!--滚动导航-->
+            <div>
+                <div>
+                    <a>学习笔记</a>
+                </div>
+                <div>
+                    <a>关于</a>
+                </div>
+                <div>
+                    <a>影集</a>
+                </div>
+            </div>
+            <div>
+                <a>返回首页</a>
+            </div>
+        </div>
+    </div>
+    <!--关于-->
+    <section class="section why-us" data-section="section2">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-heading">
+                        <h2>探头的橘子的留言</h2>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div id='tabs'>
+                        <ul>
+                            <li><a href='#tabs-1'>关于本站</a></li>
+                            <li><a href='#tabs-2'>Top Management</a></li>
+                            <li><a href='#tabs-3'>关于本站的搭建</a></li>
+                        </ul>
+                        <section class='tabs-content'>
+                            <article id='tabs-1'>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <img src="~/assets/images/choose-us-image-01.png" alt="">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h4>Best Education</h4>
+                                        <p>Grad School is free educational HTML template with Bootstrap 4.5.2 CSS layout. Feel free to use it for educational or commercial purposes. You may want to make <a href="https://paypal.me/templatemo" target="_parent" rel="sponsored">a little donation</a> to TemplateMo. Please tell your friends about us. Thank you.</p>
+                                    </div>
+                                </div>
+                            </article>
+                            <article id='tabs-2'>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <img src="~/assets/images/choose-us-image-02.png" alt="">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h4>Top Level</h4>
+                                        <p>You can modify this HTML layout by editing contents and adding more pages as you needed. Since this template has options to add dropdown menus, you can put many HTML pages.</p>
+                                        <p>Suspendisse tincidunt, magna ut finibus rutrum, libero dolor euismod odio, nec interdum quam felis non ante.</p>
+                                    </div>
+                                </div>
+                            </article>
+                            <article id='tabs-3'>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <img src="~/assets/images/choose-us-image-03.png" alt="">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h4>Quality Meeting</h4>
+                                        <p>本网站的搭建尚未完善，由于橘子所有的技术全靠自学，而网络上的教学比较杂乱，很多东西都是东拼西凑而成的，如过遇到各种Bug请不要惊讶。</p>
+
+                                        <p>网站技术：Asp.Net Core MVC</p>
+                                        <p>首页背景图：<a rel="nofollow" href="https://bz.zzzmh.cn/indexemo.com/tm-557-grad-school" target="_parent">极简壁纸</a></p>
+                                        <p>网页模板：<a rel="nofollow" href="https://templatemo.com/tm-557-grad-school" target="_parent">TemplateMo 557 Grad School</a> </p>
+                                    </div>
+                                </div>
+                            </article>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+   
+    <!--
+        - article card
+      -->
+    <section class="section-card">
+        @foreach (var item in Model)
+        {
+            <article class="article-card">
+
+                <div class="img-box">
+                    <img src="~/assets/images/drawers.jpg" alt="" class="article-banner">
+                </div>
+
+
+                <div class="article-content">
+
+                    <a href="#">
+                        <h3 class="article-title">@Html.DisplayFor(modelItem => item.Title)</h3>
+                    </a>
+
+                    <p class="article-text">@Html.DisplayFor(modelItem => item.Summary)</p>
+
+                    <div class="acticle-content-footer">
+
+                        <div class="author">
+                            <img src="~/assets/images/avatar-michelle.jpg" alt="" class="author-avater">
+
+                            <div class="author-info">
+                                <a href="#">
+                                    <h4 class="author-name">Michelle Appleton</h4>
+                                </a>
+                                <div class="publish-date">28 Jun 2020</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </article>
+        }
+    </section>
+
+
 </div>
+
+
+
+
+<!--
+  - ionicon link
+-->
+
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

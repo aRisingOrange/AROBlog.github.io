@@ -24,20 +24,20 @@ namespace AROBlog.BLL
         /// <returns></returns>
         public async Task PostArticle(string title, string path, string summary, Guid[] categoryIds, Guid userId)
         {
-            using(var articleSvc=new ArticleService())
+            using (var articleSvc = new ArticleService())
             {
                 var article = new Article()
                 {
                     Title = title,
                     StoragePath = path,
                     UserId = userId,
-                 Summary = summary,
+                    Summary = summary,
                 };
-                await articleSvc.CreateAsync(article); 
-                Guid articleId= article.Id;
-                using (var articleToCategorySvc=new ArticleToCategoryService())
+                await articleSvc.CreateAsync(article);
+                Guid articleId = article.Id;
+                using (var articleToCategorySvc = new ArticleToCategoryService())
                 {
-                    foreach(var categoryId in categoryIds)
+                    foreach (var categoryId in categoryIds)
                     {
                         await articleToCategorySvc.CreateAsync(new ArticleToCategory()
                         {
@@ -52,34 +52,34 @@ namespace AROBlog.BLL
         }
 
         #region 创建文章-在线编辑（暂时弃用）
-       /* public async Task CreateArticle(string title, string content, Guid[] categoryIds, Guid userId)
-                {
+        /* public async Task CreateArticle(string title, string content, Guid[] categoryIds, Guid userId)
+                 {
 
-                    using (var articleSvc = new ArticleService())
-                    {
-                        var article = new Article()
-                        {
-                            Title = title,
-                            Content = content,
-                        };
-                        await articleSvc.CreateAsync(article);
+                     using (var articleSvc = new ArticleService())
+                     {
+                         var article = new Article()
+                         {
+                             Title = title,
+                             Content = content,
+                         };
+                         await articleSvc.CreateAsync(article);
 
-                        Guid articleId = article.Id;
-                        using (var articleToCategorySvc = new ArticleToCategoryService())
-                        {
-                            foreach (var categoryId in categoryIds)
-                            {
-                                await articleToCategorySvc.CreateAsync(new ArticleToCategory()
-                                {
-                                    ArticleId = articleId,
-                                    CategoryId = categoryId
-                                }, saved: false);
-                            }
-                            await articleToCategorySvc.Save();
-                        }
-                    }
-                }
-                */
+                         Guid articleId = article.Id;
+                         using (var articleToCategorySvc = new ArticleToCategoryService())
+                         {
+                             foreach (var categoryId in categoryIds)
+                             {
+                                 await articleToCategorySvc.CreateAsync(new ArticleToCategory()
+                                 {
+                                     ArticleId = articleId,
+                                     CategoryId = categoryId
+                                 }, saved: false);
+                             }
+                             await articleToCategorySvc.Save();
+                         }
+                     }
+                 }
+                 */
         #endregion
 
         /// <summary>
@@ -134,17 +134,70 @@ namespace AROBlog.BLL
                 return await articleService.GetAllAsync().AnyAsync(m => m.Id == articleId);
             }
         }
-
-        public Task<List<ArticleDTO>> GetAllArticlesByAccount(string account)
+        /// <summary>
+        /// 获取所有数据库中所有文章
+        /// </summary>
+        /// <returns></returns>
+        public async Task<List<ArticleDTO>> GetAllArticles()
         {
-            throw new NotImplementedException();
-        }
+            using (var articleSvc = new ArticleService())
+            {
+                var list = await articleSvc.GetAllOrderAsync().Select(m => new ArticleDTO()
+                {
+                    Id = m.Id,
+                    Title = m.Title,
+                    CreateTime = m.CreateTime,
+                    StoragePath = m.StoragePath,
+                    Summary = m.Summary,
+                }).ToListAsync();
+                using (IArticleToCategoryService articleToCategoryService = new ArticleToCategoryService())
+                {
+                    foreach (var articleDto in list)
+                    {
+                        var cates = await articleToCategoryService.GetAllAsync().Include(m => m.Category).Where(m => m.ArticleId == articleDto.Id).ToListAsync();
 
-        public Task<List<ArticleDTO>> GetAllArticlesByCategoryId(Guid categoryId)
+                        articleDto.CategoryIds = cates.Select(m => m.CategoryId).ToArray();
+
+                        articleDto.CategoryNames = cates.Select(m => m.Category.CategoryName).ToArray();
+                    }
+                    return list;
+                }
+
+            }
+        }
+        /// <summary>
+        /// 获取所有数据库中所有文章并分页
+        /// </summary>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <returns></returns>
+        public async Task<List<ArticleDTO>> GetAllArticles(int pageIndex, int pageSize)
         {
-            throw new NotImplementedException();
-        }
+            using (var articleSvc = new ArticleService())
+            {
+                var list = await articleSvc.GetAllByPageOrderAsync(pageSize, pageIndex, false)
+                  .Select(m => new ArticleDTO()
+                  {
+                      Id = m.Id,
+                      Title = m.Title,
+                      CreateTime = m.CreateTime,
+                      Summary = m.Summary,
+                  }).ToListAsync();
+                using (IArticleToCategoryService articleToCategoryService = new ArticleToCategoryService())
+                {
+                    foreach (var articleDto in list)
+                    {
+                        var cates = await articleToCategoryService.GetAllAsync().Include(m => m.Category).Where(m => m.ArticleId == articleDto.Id).ToListAsync();
 
+                        articleDto.CategoryIds = cates.Select(m => m.CategoryId).ToArray();
+
+                        articleDto.CategoryNames = cates.Select(m => m.Category.CategoryName).ToArray();
+                    }
+                    return list;
+                }
+
+            }
+        }
         /// <summary>
         /// 根据用户id获取所有文章
         /// </summary>
@@ -179,6 +232,10 @@ namespace AROBlog.BLL
 
             }
         }
+        public Task<List<ArticleDTO>> GetAllArticlesByCategoryId(Guid categoryId)
+        {
+            throw new NotImplementedException();
+        }
         /// <summary>
         /// 根据用户id获取所有分类
         /// </summary>
@@ -195,8 +252,21 @@ namespace AROBlog.BLL
                 }).ToListAsync();
             }
         }
+        public async Task<List<CategoryDTO>> GetAllCategories()
+        {
+            using (ICategoryService categoryService = new CategoryService())
+            {
+                return await categoryService.GetAllAsync().Select(m => new CategoryDTO()
+                {
+                    Id = m.Id,
+                    CategoryName = m.CategoryName
+                }).ToListAsync();
+            }
+        }
+
+
         /// <summary>
-        /// 获取总页数
+        /// 获取本用户发布文章的列表总页数
         /// </summary>
         /// <param name="userId"></param>
         /// <returns></returns>
@@ -205,6 +275,13 @@ namespace AROBlog.BLL
             using (IDAL.IArticleService articleService = new ArticleService())
             {
                 return await articleService.GetAllAsync().CountAsync(m => m.UserId == userId);
+            }
+        }
+        public async Task<int> GetDataCount()
+        {
+            using (IDAL.IArticleService articleService = new ArticleService())
+            {
+                return await articleService.GetAllAsync().CountAsync();
             }
         }
         /// <summary>
@@ -242,7 +319,7 @@ namespace AROBlog.BLL
                         .Where(m => m.ArticleId == data.Id).ToListAsync();
                     data.CategoryIds = cates.Select(m => m.CategoryId).ToArray();
                     data.CategoryNames = cates.Select(m => m.Category.CategoryName).ToArray();
-                    
+
                     return data;
                 }
             }
@@ -254,14 +331,14 @@ namespace AROBlog.BLL
             {
                 var data = await categoryService.GetAllAsync()
                    .Include(m => m.User)
-                   .Where(m => m.Id ==categoryId)
+                   .Where(m => m.Id == categoryId)
                    .Select(m => new CategoryDTO()
                    {
                        Id = m.Id,
-                      CategoryName=m.CategoryName,
+                       CategoryName = m.CategoryName,
                    }).FirstAsync();
-                
-                    return data;
+
+                return data;
             }
         }
 
@@ -272,7 +349,7 @@ namespace AROBlog.BLL
         /// <returns></returns>
         public async Task RemoveArticle(Guid articleId)
         {
-            using(IArticleService articleService = new ArticleService())
+            using (IArticleService articleService = new ArticleService())
             {
                 var data = await articleService.GetAllAsync()
                     .Include(m => m.User)
@@ -296,7 +373,7 @@ namespace AROBlog.BLL
             using (ICategoryService categoryService = new CategoryService())
             {
                 var data = await categoryService.GetOneByIdAsync(id);
-            
+
                 await categoryService.RemoveAsync(data.Id);
             }
         }

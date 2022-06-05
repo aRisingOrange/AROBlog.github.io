@@ -23,6 +23,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aWNsZVxBcnRpY2xlTGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Documents/Codes/test/BlogTest/AROBlog/Views/Article/ArticleListAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aWNsZVxBcnRpY2xlTGlzdEFkbWluLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Documents/Codes/test/BlogTest/AROBlog/Views/Article/CategoryList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aWNsZVxDYXRlZ29yeUxpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -78,6 +82,10 @@ build_metadata.AdditionalFiles.CssScope =
 [D:/Documents/Codes/test/BlogTest/AROBlog/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Documents/Codes/test/BlogTest/AROBlog/Views/Shared/_Layout - 复制.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQgLSDlpI3liLYuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-cma92xz3j4
 
 [D:/Documents/Codes/test/BlogTest/AROBlog/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s

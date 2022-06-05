@@ -5,6 +5,7 @@ using AROBlog.Filter;
 using AROBlog.IBLL;
 using AROBlog.IDAL;
 using AROBlog.Models.BlogViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
@@ -54,13 +55,13 @@ namespace AROBlog.Controllers
             return View();
         }
         /// <summary>
-        /// 文章列表
+        /// 文章列表后台
         /// </summary>
         /// <param name="pageIndex"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<ActionResult> ArticleList(int pageIndex = 0, int pageSize = 7)
+        public async Task<ActionResult> ArticleListAdmin(int pageIndex = 0, int pageSize = 1)
         {
 
             //需要给页面前端 总页码数，当前页码，可显示的总页码数量
@@ -69,6 +70,28 @@ namespace AROBlog.Controllers
             Guid guid = new Guid(userid);
 
             var articles = await articleMgr.GetAllArticlesByUserId(guid, pageIndex, pageSize);
+            var dataCount = await articleMgr.GetDataCount(guid);
+            ViewBag.PageCount = dataCount % pageSize == 0 ? dataCount / pageSize : dataCount / pageSize + 1;
+            ViewBag.PageIndex = pageIndex;
+            return View(articles);
+        }
+        /// <summary>
+        /// 文章列表
+        /// </summary>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<ActionResult> ArticleList(int pageIndex = 0, int pageSize = 7)
+        {
+
+            //需要给页面前端 总页码数，当前页码，可显示的总页码数量
+            var articleMgr = new ArticleManager();
+            var userid = HttpContext.Session.GetString("userid_session");
+            Guid guid = new Guid(userid);
+
+            var articles = await articleMgr.GetAllArticles( pageIndex, pageSize);
             var dataCount = await articleMgr.GetDataCount(guid);
             ViewBag.PageCount = dataCount % pageSize == 0 ? dataCount / pageSize : dataCount / pageSize + 1;
             ViewBag.PageIndex = pageIndex;

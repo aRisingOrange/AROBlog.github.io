@@ -1,0 +1,140 @@
+﻿@model IEnumerable<AROBlog.DTO.ArticleDTO>
+
+<p>
+    <a asp-action="PostArticle">Create New</a>
+</p>
+<section class="section articlelist py-5" style="margin:10px,100px,10px,10px">
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StoragePath)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StoragePath)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "ArticleDetails", new {  id=item.Id  }) |
+                @Html.ActionLink("Delete", "DeleteArticle", new {  id=item.Id  })
+            </td>
+        </tr>
+}
+    </tbody>
+        <tfoot>
+    <tr>
+        <td colspan="6">
+            <ul class="pagerList">
+                <a href="/Article/ArticleList?pageIndex=0"><button class="float-left" style="margin:5px">首页</button></a>
+                @if (ViewBag.PageCount <= 7)
+                {
+                    // 数据实际页码数量小于等于可容纳页码的总量
+                    for (int i = 1; i <= ViewBag.PageCount; i++)
+                    {
+                            if (i == ViewBag.PageIndex+1)
+                            {
+                                <li class="float-left" style="margin:5px">
+                                    <span  > <button style="background-color:red" > @i </button></span>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="float-left"style="margin:5px" >
+                                    <a href="/Article/ArticleList?pageIndex=@(i-1)"><button> @i </button></a>
+                                </li>
+                            }
+                    }
+
+                }
+                else
+                {
+                    // 数据实际页码数量大于可容纳页码的总量
+                    if (ViewBag.PageIndex <= 7 / 2)
+                    {
+                        
+                        for (int i = 1; i <= 7; i++)
+                        {
+                            if (i == ViewBag.PageIndex+1)
+                            {
+                                <li class="float-left" style="margin:5px">
+                                    <span ><button style="background-color:red" > @i </button> </span>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="float-left"style="margin:5px">
+                                    <a href="/Article/ArticleList?pageIndex=@(i-1)"><button> @i </button> </a>
+                                </li>
+                            }
+                        }
+
+                    }
+                    else if ((ViewBag.PageCount - ViewBag.PageIndex - 1) <= 7 / 2)
+                    {
+                        for (int i = ViewBag.PageCount - 6; i <= ViewBag.PageCount; i++)
+                        {
+                            if (i == ViewBag.PageIndex+1)
+                            {
+                                <li class="float-left"style="margin:5px">
+                                    <a ><button style="background-color:red" > @i </button>  </a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="float-left"style="margin:5px">
+                                    <a href="/Article/ArticleList?pageIndex=@(i-1)"><button> @i </button> </a>
+                                </li>
+                            }
+
+                        }
+                    }
+                    else
+                    {
+                        for (int i = ViewBag.PageIndex - 7 / 2+1; i <= ViewBag.PageIndex + 7 / 2+1; i++)
+                        {
+                            if (i == ViewBag.PageIndex+1)
+                            {
+                                <li class="float-left"style="margin:5px">
+                                    <a href="#"><button style="background-color:red" > @i </button> </a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="float-left"style="margin:5px">
+                                    <a href="/Article/ArticleList?pageIndex=@(i-1)"><button> @i </button></a>
+                                </li>
+                            }
+                        }
+                    }
+                }
+
+            </ul>
+        </td>
+    </tr>
+    </tfoot>
+</table>
+</section>

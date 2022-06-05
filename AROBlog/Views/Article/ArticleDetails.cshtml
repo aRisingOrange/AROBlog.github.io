@@ -23,12 +23,7 @@
             @{
             string a = "1";
         }
-        <dt>
-            @Html.DisplayNameFor(model => model.Id)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Id)
-        </dd>
+      
         <dt>
             @Html.DisplayNameFor(model => model.Title)
         </dt>
@@ -40,15 +35,9 @@
             @Html.DisplayNameFor(model => model.CreateTime)
         </dt>
         <dd>
-            
             @Html.DisplayFor(model => model.CreateTime)
         </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.StoragePath)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.StoragePath)
-        </dd>
+       
     </dl>
     <!--将md文档渲染出来-->
       <div id="test-editormd-view" class="post-content">
@@ -58,8 +47,9 @@
 </div>
 <div>
     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index"><button>返回列表</button></a>
 </div>
+@*markdown渲染*@
 @section bottom{
     <script  src="~/editor.md-master/examples/js/jquery.min.js"></script>
      <script src="~/editor.md-master/lib/marked.min.js"></script>
