@@ -105,7 +105,7 @@ namespace AROBlog.DAL
         /// <param name="asc"></param>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public IQueryable<T> GetAllOrderAsync(bool asc = true)
+        public IQueryable<T> GetAllOrderAsync(bool asc = false)
         {
             var datas = GetAllAsync();
             datas=asc?datas.OrderBy(m=>m.CreateTime):datas.OrderByDescending(m=>m.CreateTime);

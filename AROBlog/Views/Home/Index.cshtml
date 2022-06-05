@@ -16,18 +16,25 @@
 
             <div class="scroll-to-section">
                 <a href="#section2">Discover more</a>
-
             </div>
         </div>
     </div>
 </section>
 <!-- ***** Main Banner Area End ***** -->
+<!--返回顶部-->
+<div class="backtop" id="rocket">
+    <a class="backtop" href="#"><img src="~/assets/images/月球，星球.png" /></a>
+</div>
+<!--右侧卡片-->
 <div class="contain-all">
     <div class="mycard" id="card">
         <div class="container">
             <!--头像和名字-->
             <div class="icon">
-                <img src="~/assets/images/author-01.png" />
+                <img src="~/assets/images/icon-1.jpg" />
+
+            </div>
+            <div class="UserName">
                 <h4>探头的橘子</h4>
             </div>
             <!--文章总数-->
@@ -36,24 +43,11 @@
                 <h5>Articles</h5>
             </div>
             <!--滚动导航-->
-            <div>
-                <div>
-                    <a>学习笔记</a>
-                </div>
-                <div>
-                    <a>关于</a>
-                </div>
-                <div>
-                    <a>影集</a>
-                </div>
-            </div>
-            <div>
-                <a>返回首页</a>
-            </div>
+
         </div>
     </div>
     <!--关于-->
-    <section class="section why-us" data-section="section2">
+    <section class="about" data-section="section2">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -64,9 +58,23 @@
                 <div class="col-md-12">
                     <div id='tabs'>
                         <ul>
-                            <li><a href='#tabs-1'>关于本站</a></li>
-                            <li><a href='#tabs-2'>Top Management</a></li>
-                            <li><a href='#tabs-3'>关于本站的搭建</a></li>
+                            
+                            <li>
+                                
+                                    <a href='#tabs-1'>关于本站</a>
+                            
+                            </li>
+                            <li>
+                  
+                                    <a href='#tabs-2'>其他</a>
+                            </li>
+
+                            <li>
+                          
+                                    <a href='#tabs-3'>搭建</a>
+                          
+                            </li>
+                       
                         </ul>
                         <section class='tabs-content'>
                             <article id='tabs-1'>
@@ -113,52 +121,66 @@
             </div>
         </div>
     </section>
-   
+
     <!--
         - article card
       -->
     <section class="section-card">
-        @foreach (var item in Model)
-        {
-            <article class="article-card">
+        <div class="col-md-12">
+            <div class="section-heading">
+                <h2>最近更新</h2>
+            </div>
+        </div>
+        <div>
+            @{
+                int i = 1;
+            }
+            @foreach (var item in Model)
+            {
+                if (i <= 10)
+                {
 
-                <div class="img-box">
-                    <img src="~/assets/images/drawers.jpg" alt="" class="article-banner">
-                </div>
 
+                    <article class="article-card">
 
-                <div class="article-content">
-
-                    <a href="#">
-                        <h3 class="article-title">@Html.DisplayFor(modelItem => item.Title)</h3>
-                    </a>
-
-                    <p class="article-text">@Html.DisplayFor(modelItem => item.Summary)</p>
-
-                    <div class="acticle-content-footer">
-
-                        <div class="author">
-                            <img src="~/assets/images/avatar-michelle.jpg" alt="" class="author-avater">
-
-                            <div class="author-info">
-                                <a href="#">
-                                    <h4 class="author-name">Michelle Appleton</h4>
-                                </a>
-                                <div class="publish-date">28 Jun 2020</div>
-                            </div>
+                        <div class="img-box">
+                            <img src="~/assets/images/drawers.jpg" alt="" class="article-banner">
                         </div>
-                    </div>
 
-                </div>
 
-            </article>
-        }
+                        <div class="article-content">
+
+                            <a href="#">
+                                <h3 class="article-title">@Html.DisplayFor(modelItem => item.Title)</h3>
+                            </a>
+
+                            <p class="article-text">@Html.DisplayFor(modelItem => item.Summary)</p>
+
+                            <div class="acticle-content-footer">
+
+                                <div class="author">
+                                    <img src="~/assets/images/avatar-michelle.jpg" alt="" class="author-avater">
+
+                                    <div class="author-info">
+                                        <a href="#">
+                                            <h4 class="author-name">Michelle Appleton</h4>
+                                        </a>
+                                        <div class="publish-date">@Html.DisplayFor(modelItem => item.CreateTime)</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </article>
+                    i += 1;
+                }
+            }
+        </div>
     </section>
 
 
 </div>
-
-
 
 
 <!--

@@ -47,7 +47,7 @@ p {
     .section-heading h2:before {
         /*width: 1px;  */
         height: 100px;
-        background-color: #D6933C;
+        background-color: black;
         position: absolute;
         top: -102px;
         content: '';
@@ -56,15 +56,17 @@ p {
     }
 
     .section-heading h2 {
-        background-color: #D6933C;
+        background-color: white;
         margin-top: 10px;
         position: relative;
         font-size: 25px;
         font-weight: 500;
-        color: #fff;
+        color: black;
         letter-spacing: 0.5px;
         padding: 15px 20px;
         border: 2px solid rgba(250,250,250,0.1);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+        border-radius:10px;
     }
 
 
@@ -95,7 +97,6 @@ a.menu-link {
         display: block;
         font-size: 36px;
         color: red;
-
     }
 
     nav[role="navigation"] {
@@ -281,13 +282,11 @@ header {
             transition: all 0.5s;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
             text-align: center;
-       
         }
 
         .main-menu li:hover .sub-menu {
             opacity: 1;
             visibility: visible;
-
         }
 
         .main-menu li .sub-menu li {
@@ -310,7 +309,6 @@ header {
                 font-weight: 500;
                 padding: 0px 1px;
                 letter-spacing: 1px;
-
                 transition: all 0.5s;
             }
                 /*下拉菜单鼠标经过时变色*/
@@ -318,10 +316,10 @@ header {
                     color: #68322C;
                     border: none;
                 }
-          /*      鼠标经过时加边框*/
+/*      鼠标经过时加边框*/
 .main-nav li:hover a,
 .main-nav li.active a {
-border-style:none;
+    border-style: none;
 }
 
 @media (max-width: 950px) {
@@ -476,10 +474,10 @@ section.articlelist {
 
 div.contain-all .mycard {
     background-color: rgba(255,255,255,0.9);
-    width: 200px;
-    height: 55%;
-    position: fixed;
-    top: 200px;
+    width: 250px;
+    height: 500px;
+    position: absolute;
+    top: 105%;
     right: 3%;
     overflow: hidden;
     border-radius: 10px;
@@ -489,37 +487,80 @@ div.contain-all .mycard {
 div.mycard .icon {
     background-color: aquamarine;
     position: absolute;
+    left: 30%;
     top: 5%;
-    left: 25%;
-    width: 50%;
+    width: 40%;
     height: 20%;
-    align-content: center;
+    border-radius: 10px;
 }
 
-    div.mycard .icon img {
-        width: 100%;
-        height: 100%;
-    }
+div.mycard .UserName {
+    width: 80%;
+    text-align: center;
+    top: 27%;
+    position: absolute;
+    left: 10%;
+    right: auto;
+}
 
-    div.mycard .icon h4 {
-    }
+div.mycard .icon img {
+    width: 100%;
+    height: 100%;
+}
+
+div.mycard .icon h4 {
+    top: 27%;
+}
 
 div.mycard .articles {
-    background-color: red;
     position: absolute;
-    top: 20%;
+    text-align: center;
+    top: 35%;
     left: 25%;
     width: 50%;
     height: 20%;
 }
 
+    div.mycard .articles h6 {
+        margin: 10px;
+        border-bottom-style: groove;
+        border-bottom: 1px solid black;
+    }
+
 @media screen and (max-width:920px) {
-    div.mycard {
+    div .mycard {
         display: none;
     }
 }
+
+/*返回顶部*/
+.backtop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 50;
+}
+
+    .backtop a {
+        height: 50px;
+        width: 45px;
+        text-align: center;
+        /*    display:block;*/
+        border-radius: 3px;
+        cursor: pointer;
+    }
+
+        .backtop a img {
+            width: 100%;
+            line-height: 39px;
+            font-size: 25px;
+        }
+
+html {
+    scroll-behavior: smooth;
+}
 /* 介绍 */
-section.why-us {
+ .about {
     /* background-image: url(../images/coming-soon-bg.jpg);*/
     background-repeat: no-repeat;
     background-size: cover;
@@ -533,7 +574,7 @@ section.why-us {
 
 
 @media screen and (max-width: 767px) {
-    section.why-us {
+    .about {
         /* background-image: url(../images/coming-soon-bg.jpg);*/
         background-repeat: no-repeat;
         background-size: cover;
@@ -549,18 +590,23 @@ section.why-us {
 
 #tabs {
     text-align: center;
+    background-color: white;
+
 }
 
-    #tabs ul {
-        margin: 0;
-        padding: 0;
-        -webkit-column-count: 3;
-        -moz-column-count: 3;
-        column-count: 3;
-        -webkit-column-gap: 0;
-        -moz-column-gap: 0;
-        column-gap: 0;
-    }
+#tabs ul {
+    margin: 0;
+    padding: 10px;
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
+    -webkit-column-gap: 0;
+    -moz-column-gap: 0;
+    column-gap: 0;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    height: 100px;
+}
 
         #tabs ul::after {
             clear: both;
@@ -578,8 +624,8 @@ section.why-us {
 
             #tabs ul li a {
                 display: block;
-                font-size: 13px;
-                font-weight: 700;
+                font-size: 20px;
+                font-weight: 500;
                 letter-spacing: 1px;
                 cursor: pointer;
                 outline: 0;
@@ -589,23 +635,24 @@ section.why-us {
                 text-transform: uppercase;
                 position: relative;
             }
-
+            /*没点之前的小方块*/
                 #tabs ul li a:after {
                     transition: all 0.3s;
-                    width: 10px;
-                    height: 10px;
+                    width: 20px;
+                    height: 20px;
                     background-color: #AB7B45;
                     content: '';
                     position: absolute;
                     left: 50%;
                     transform: translate(-50%);
                     bottom: 0;
+                    border-radius: 10px;
                 }
 
                 #tabs ul li a:before {
                     transition: all 0.3s;
                     width: 25px;
-                    height: 25px;
+                    height: 30px;
                     border: 2px solid transparent;
                     background-color: transparent;
                     content: '';
@@ -613,6 +660,7 @@ section.why-us {
                     left: 50%;
                     transform: translate(-50%);
                     bottom: -5px;
+                    border-radius: 14px;
                 }
 
             #tabs ul li span {
@@ -624,13 +672,13 @@ section.why-us {
         }
             /*  按钮选中后上面的标题*/
             #tabs ul .ui-tabs-active a {
-                color: #7D1B0a;
+                color: #AB7B45;
             }
                 /*按钮选中后*/
                 #tabs ul .ui-tabs-active a:after {
                     background-color: #7D1B0a;
-                    width: 1px;
-                    height: 15px;
+                    width: 3px;
+                    height: 13px;
                 }
 
                 #tabs ul .ui-tabs-active a:before {
@@ -1122,15 +1170,14 @@ img.mfp-img {
 
 /* Footer */
 footer {
-    background-color: #D6933C;
+    background-color: white;
     text-align: center;
-    margin: 3% 6%;
 }
 
     footer p {
         margin-bottom: 0px;
         padding: 25px 0px;
-        color: #fff;
+        color: black;
         font-size: 13px;
         text-transform: uppercase;
         font-weight: 600;
@@ -1217,15 +1264,13 @@ footer {
     margin: 3% 25% 3% 5%;
     border-radius: 10px;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
-    display:flex;
-  align-items:center;
-    flex-direction:column;
-
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 @media screen and (max-width:800px) {
     .section-card {
-        
         margin: 3% 5% 3% 5%;
     }
 }
@@ -1234,7 +1279,7 @@ footer {
     display: grid;
     grid-template-columns: 285px minmax(300px, 445px);
     max-width: 800px;
-    margin-top:10px;
+    margin-top: 10px;
     border-radius: 10px;
     box-shadow: 6px 6px 5px hsla(0, 0%, 0%, 0.02), 25px 25px 20px hsla(0, 0%, 0%, 0.03), 100px 100px 80px hsla(0, 0%, 0%, 0.05);
 }
@@ -1354,7 +1399,7 @@ footer {
 
     .img-box, .article-content {
         border-radius: 0;
-        width:350px;
+        width: 350px;
     }
 
     .img-box {
@@ -1381,5 +1426,4 @@ footer {
         width: 35px;
         height: 35px;
     }
-
 }

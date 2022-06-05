@@ -31,12 +31,12 @@ https://templatemo.com/tm-557-grad-school
     <div class="logo">
       <a href="#"><em>ARO&nbsp;</em> </a>
     </div>
-    <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
+   @* <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>*@
 
     <nav id="menu" class="main-nav" role="navigation">
       <ul class="main-menu">
         <li><a href="/home/index">主页</a></li>
-        <li class="has-submenu"><a href="/home/index">学习笔记</a>
+        <li class="has-submenu"><a href="#section2">学习笔记</a>
           <ul class="sub-menu">
             <li><a href="/Article/ArticleList">全部内容</a></li>
             <li><a href="#section3">What we do?</a></li>
@@ -69,6 +69,7 @@ https://templatemo.com/tm-557-grad-school
       </div>
     </div>
   </footer>
+
 <!-- Scripts -->
 <!-- Bootstrap core JavaScript -->
 <script src="~/vendor/jquery/jquery.min.js"></script>
@@ -119,19 +120,18 @@ https://templatemo.com/tm-557-grad-school
         });
     };
 
-    $('.main-menu, .scroll-to-section').on('click', 'a', function(e) {
-        //if ($(e.target).hasClass('external')) {
-        //    return;
-        //}
-        //e.preventDefault();
-        //$('#menu').removeClass('active');
-        //showSection($(this).attr('href'), true);
+    //$('.main-menu, .scroll-to-section').on('click', 'a', function(e) {
+    //    if ($(e.target).hasClass('external')) {
+    //        return;
+    //    }
+    //    e.preventDefault();
+    //    $('#menu').removeClass('active');
+    //    showSection($(this).attr('href'), true);
+    //});
 
-    });
-
-    $(window).scroll(function() {
-        checkSection();
-    });
+    //$(window).scroll(function() {
+    //    checkSection();
+    //});
 </script>
 <script type="text/javascript">
     function scrollToView(id){
