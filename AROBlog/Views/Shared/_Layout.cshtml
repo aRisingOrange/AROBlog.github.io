@@ -52,8 +52,10 @@ https://templatemo.com/tm-557-grad-school
     </nav>
     
   </header>
-@*    <div id="nav-BG"></div>*@
-
+  <!--返回顶部-->
+<div class="backtop" id="rocket">
+    <a class="backtop" href="#"><img src="~/assets/images/月球，星球.png" /></a>
+</div>
         <main role="main" class="pb-3">
             @RenderBody()
       
@@ -142,6 +144,7 @@ https://templatemo.com/tm-557-grad-school
         })
     }
 </script>
+<!--粘性导航-->
  <script>
     window.addEventListener('scroll', () => {
       let header = document.querySelector('header')

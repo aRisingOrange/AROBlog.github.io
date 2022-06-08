@@ -14,10 +14,8 @@
     </style>
 }
 
-<h2>ArticleDetails</h2>
-
+<section class="articledetail">
 <div class="container">
-    <h4>ArticleDTO</h4>
     <hr />
     <dl class="dl-horizontal">
             @{
@@ -46,9 +44,9 @@
 
 </div>
 <div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index"><button>返回列表</button></a>
+    <a asp-action="Index">返回列表</a>
 </div>
+</section>
 @*markdown渲染*@
 @section bottom{
     <script  src="~/editor.md-master/examples/js/jquery.min.js"></script>

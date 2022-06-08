@@ -85,17 +85,21 @@ namespace AROBlog.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> ArticleList(int pageIndex = 0, int pageSize = 7)
         {
-
+            ArticleViewModel model = new ArticleViewModel();
             //需要给页面前端 总页码数，当前页码，可显示的总页码数量
             var articleMgr = new ArticleManager();
             var userid = HttpContext.Session.GetString("userid_session");
             Guid guid = new Guid(userid);
-
+            
             var articles = await articleMgr.GetAllArticles( pageIndex, pageSize);
             var dataCount = await articleMgr.GetDataCount(guid);
+            var categories = await articleMgr.GetAllCategories();
             ViewBag.PageCount = dataCount % pageSize == 0 ? dataCount / pageSize : dataCount / pageSize + 1;
             ViewBag.PageIndex = pageIndex;
-            return View(articles);
+
+            model.articleDTOs = articles;
+            model.categoryDTOs = categories;
+            return View(model);
         }
         /// <summary>
         /// 文章详情

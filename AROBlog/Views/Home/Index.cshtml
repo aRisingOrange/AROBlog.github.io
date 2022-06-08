@@ -21,166 +21,208 @@
     </div>
 </section>
 <!-- ***** Main Banner Area End ***** -->
-<!--返回顶部-->
-<div class="backtop" id="rocket">
-    <a class="backtop" href="#"><img src="~/assets/images/月球，星球.png" /></a>
-</div>
-<!--右侧卡片-->
-<div class="contain-all">
-    <div class="mycard" id="card">
-        <div class="container">
-            <!--头像和名字-->
-            <div class="icon">
-                <img src="~/assets/images/icon-1.jpg" />
 
-            </div>
-            <div class="UserName">
-                <h4>探头的橘子</h4>
-            </div>
-            <!--文章总数-->
-            <div class="articles">
-                <h6>99</h6>
-                <h5>Articles</h5>
-            </div>
-            <!--滚动导航-->
 
-        </div>
+
+<div>
+    <div class="showcard" id="popedDiv1"></div>
+    <div class="sidecard">
+        <!-- --t是自定义属性，通过var函数可调用 -->
+
+        <li style="--t:20%;">
+            <a href="#">
+                <i class="fa fa-home" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li style="--t:30%;">
+            <a href="#">
+                <i class="fa fa-th-large" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li style="--t:40%;">
+            <a href="#">
+                <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li style="--t:50%;">
+            <a href="#">
+                <i class="fa fa-user" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li style="--t:60%;">
+            <a href="#section2">
+                <i class="fa fa-cog" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li style="--t:70%;">
+            <a onclick="popDiv('popedDiv1')">
+                <i class="fa fa-sign-out" aria-hidden="true"></i>
+            </a>
+        </li>
+
+        <div class="top"></div>
+        <div class="middle"></div>
+        <div class="bottom"></div>
     </div>
-    <!--关于-->
-    <section class="about" data-section="section2">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="section-heading">
-                        <h2>探头的橘子的留言</h2>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div id='tabs'>
-                        <ul>
-                            
-                            <li>
-                                
-                                    <a href='#tabs-1'>关于本站</a>
-                            
-                            </li>
-                            <li>
-                  
-                                    <a href='#tabs-2'>其他</a>
-                            </li>
+</div>
 
-                            <li>
-                          
-                                    <a href='#tabs-3'>搭建</a>
-                          
-                            </li>
-                       
-                        </ul>
-                        <section class='tabs-content'>
-                            <article id='tabs-1'>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <img src="~/assets/images/choose-us-image-01.png" alt="">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <h4>Best Education</h4>
-                                        <p>Grad School is free educational HTML template with Bootstrap 4.5.2 CSS layout. Feel free to use it for educational or commercial purposes. You may want to make <a href="https://paypal.me/templatemo" target="_parent" rel="sponsored">a little donation</a> to TemplateMo. Please tell your friends about us. Thank you.</p>
-                                    </div>
-                                </div>
-                            </article>
-                            <article id='tabs-2'>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <img src="~/assets/images/choose-us-image-02.png" alt="">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <h4>Top Level</h4>
-                                        <p>You can modify this HTML layout by editing contents and adding more pages as you needed. Since this template has options to add dropdown menus, you can put many HTML pages.</p>
-                                        <p>Suspendisse tincidunt, magna ut finibus rutrum, libero dolor euismod odio, nec interdum quam felis non ante.</p>
-                                    </div>
-                                </div>
-                            </article>
-                            <article id='tabs-3'>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <img src="~/assets/images/choose-us-image-03.png" alt="">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <h4>Quality Meeting</h4>
-                                        <p>本网站的搭建尚未完善，由于橘子所有的技术全靠自学，而网络上的教学比较杂乱，很多东西都是东拼西凑而成的，如过遇到各种Bug请不要惊讶。</p>
-
-                                        <p>网站技术：Asp.Net Core MVC</p>
-                                        <p>首页背景图：<a rel="nofollow" href="https://bz.zzzmh.cn/indexemo.com/tm-557-grad-school" target="_parent">极简壁纸</a></p>
-                                        <p>网页模板：<a rel="nofollow" href="https://templatemo.com/tm-557-grad-school" target="_parent">TemplateMo 557 Grad School</a> </p>
-                                    </div>
-                                </div>
-                            </article>
-                        </section>
-                    </div>
+<!--关于-->
+<section class="about" id="section2">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-heading">
+                    <h2>探头的橘子的留言</h2>
                 </div>
             </div>
-        </div>
-    </section>
+            <div class="col-md-12">
+                <div id='tabs'>
+                    <ul>
 
-    <!--
-        - article card
-      -->
-    <section class="section-card">
-        <div class="col-md-12">
-            <div class="section-heading">
-                <h2>最近更新</h2>
-            </div>
-        </div>
-        <div>
-            @{
-                int i = 1;
-            }
-            @foreach (var item in Model)
-            {
-                if (i <= 10)
-                {
+                        <li>
 
+                            <a href='#tabs-1'>关于本站</a>
 
-                    <article class="article-card">
+                        </li>
+                        <li>
 
-                        <div class="img-box">
-                            <img src="~/assets/images/drawers.jpg" alt="" class="article-banner">
-                        </div>
+                            <a href='#tabs-2'>其他</a>
+                        </li>
 
+                        <li>
 
-                        <div class="article-content">
+                            <a href='#tabs-3'>搭建</a>
 
-                            <a href="#">
-                                <h3 class="article-title">@Html.DisplayFor(modelItem => item.Title)</h3>
-                            </a>
+                        </li>
 
-                            <p class="article-text">@Html.DisplayFor(modelItem => item.Summary)</p>
-
-                            <div class="acticle-content-footer">
-
-                                <div class="author">
-                                    <img src="~/assets/images/avatar-michelle.jpg" alt="" class="author-avater">
-
-                                    <div class="author-info">
-                                        <a href="#">
-                                            <h4 class="author-name">Michelle Appleton</h4>
-                                        </a>
-                                        <div class="publish-date">@Html.DisplayFor(modelItem => item.CreateTime)</div>
-                                    </div>
+                    </ul>
+                    <section class='tabs-content'>
+                        <article id='tabs-1'>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <img src="~/assets/images/choose-us-image-01.png" alt="">
+                                </div>
+                                <div class="col-md-6">
+                                    <h4>Best Education</h4>
+                                    <p>Grad School is free educational HTML template with Bootstrap 4.5.2 CSS layout. Feel free to use it for educational or commercial purposes. You may want to make <a href="https://paypal.me/templatemo" target="_parent" rel="sponsored">a little donation</a> to TemplateMo. Please tell your friends about us. Thank you.</p>
                                 </div>
                             </div>
+                        </article>
+                        <article id='tabs-2'>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <img src="~/assets/images/choose-us-image-02.png" alt="">
+                                </div>
+                                <div class="col-md-6">
+                                    <h4>Top Level</h4>
+                                    <p>You can modify this HTML layout by editing contents and adding more pages as you needed. Since this template has options to add dropdown menus, you can put many HTML pages.</p>
+                                    <p>Suspendisse tincidunt, magna ut finibus rutrum, libero dolor euismod odio, nec interdum quam felis non ante.</p>
+                                </div>
+                            </div>
+                        </article>
+                        <article id='tabs-3'>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <img src="~/assets/images/choose-us-image-03.png" alt="">
+                                </div>
+                                <div class="col-md-6">
+                                    <h4>Quality Meeting</h4>
+                                    <p>本网站的搭建尚未完善，由于橘子所有的技术全靠自学，而网络上的教学比较杂乱，很多东西都是东拼西凑而成的，如过遇到各种Bug请不要惊讶。</p>
 
+                                    <p>网站技术：Asp.Net Core MVC</p>
+                                    <p>首页背景图：<a rel="nofollow" href="https://bz.zzzmh.cn/indexemo.com/tm-557-grad-school" target="_parent">极简壁纸</a></p>
+                                    <p>网页模板：<a rel="nofollow" href="https://templatemo.com/tm-557-grad-school" target="_parent">TemplateMo 557 Grad School</a> </p>
+                                </div>
+                            </div>
+                        </article>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--
+    - article card
+  -->
+<section class="section-card">
+    <div class="col-md-12">
+        <div class="section-heading">
+            <h2>最近更新</h2>
+        </div>
+    </div>
+    <div>
+        @{
+            int i = 1;
+        }
+        @foreach (var item in Model)
+        {
+            if (i <= 10)
+            {
+
+
+                <article class="article-card">
+
+                    <div class="img-box">
+                        <img src="~/assets/images/drawers.jpg" alt="" class="article-banner">
+                    </div>
+
+
+                    <div class="article-content">
+
+                        <a href="/article/ArticleDetails?id=@item.Id">
+                            <h3 class="article-title">@Html.DisplayFor(modelItem => item.Title)</h3>
+                        </a>
+
+                        <p class="article-text">@Html.DisplayFor(modelItem => item.Summary)</p>
+
+                        <div class="acticle-content-footer">
+
+                            <div class="author">
+                                <img src="~/assets/images/avatar-michelle.jpg" alt="" class="author-avater">
+
+                                <div class="author-info">
+                                    <a href="#">
+                                        <h4 class="author-name">Michelle Appleton</h4>
+                                    </a>
+                                    <div class="publish-date">@Html.DisplayFor(modelItem => item.CreateTime)</div>
+                                </div>
+                            </div>
                         </div>
 
-                    </article>
-                    i += 1;
-                }
+                    </div>
+
+                </article>
+                i += 1;
             }
-        </div>
-    </section>
+        }
+    </div>
+</section>
 
+<!--侧边栏弹出卡片-->
+<script type="text/javascript">
+    function popDiv(params) {
+        // 通过唯一id值获取div元素
+        var popBox = document.getElementById(params);
 
-</div>
+        // 控制两个div的显示与隐藏
+
+        if (popBox.style.display == "none") {
+            popBox.style.display = "block";
+        }
+        else {
+            popBox.style.display = "none";
+        }
+    }
+
+    function closePop() {
+        // 通过唯一id值获取弹出窗口元素
+        let popDiv = document.getElementById("popDiv");
+
+        popDiv.style.display = "none";
+    }
+</script>
+
 
 
 <!--

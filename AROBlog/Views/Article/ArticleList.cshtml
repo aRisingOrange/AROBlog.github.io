@@ -1,15 +1,33 @@
-﻿@model IEnumerable<AROBlog.DTO.ArticleDTO>
+﻿@using AROBlog.Models.BlogViewModels
+@model ArticleViewModel
 
 @{
     ViewData["Title"] = "ArticleList";
 }
 
-<h2>ArticleList</h2>
+<div class="sidecategory">
 
+        <!-- --t是自定义属性，通过var函数可调用 -->
 
-<section class="articlelist" >
-    @foreach (var item in Model)
+        <li>
+            <a href="#">
+                <i class="fa fa-home" aria-hidden="true">全部</i>
+            </a>
+        </li>
+    @foreach(var category in Model.categoryDTOs)
     {
+        <li>
+          <a href="#">
+                <i class="fa fa-home" aria-hidden="true">@category.CategoryName</i>
+            </a>
+        </li>
+    }
+    
+</div>
+
+<div class="articlelist" >
+    @foreach (var item in Model.articleDTOs)
+    {<section class="article">
         <div class="content">
             <!--head-->
             <div class="head">
@@ -26,11 +44,12 @@
             </div>
 
         </div>
+        </section>
     }
 
-
-    <ul class="pagerList">
-        <a href="/Article/ArticleList?pageIndex=0"><button class="float-left" style="margin:5px">首页</button</a>
+    <div class="pagebtn">
+   <ul class="pagerList">
+       <li> <a href="/Article/ArticleList?pageIndex=0">首页</a></li>
         @if (ViewBag.PageCount <= 7)
         {
             // 数据实际页码数量小于等于可容纳页码的总量
@@ -38,14 +57,14 @@
             {
                 if (i == ViewBag.PageIndex + 1)
                 {
-                    <li class="float-left" style="margin:5px">
-                        <span> <button style="background-color:red"> @i </button></span>
+                    <li>
+                        <span>  @i </span>
                     </li>
                 }
                 else
                 {
-                    <li class="float-left" style="margin:5px">
-                        <a href="/Article/ArticleList?pageIndex=@(i-1)"><button> @i </button></a>
+                    <li>
+                        <a href="/Article/ArticleList?pageIndex=@(i-1)">@i </a>
                     </li>
                 }
             }
@@ -61,14 +80,14 @@
                 {
                     if (i == ViewBag.PageIndex + 1)
                     {
-                        <li class="float-left" style="margin:5px">
-                            <span><button style="background-color:red"> @i </button> </span>
+                        <li>
+                            <span> @i </span>
                         </li>
                     }
                     else
                     {
-                        <li class="float-left" style="margin:5px">
-                            <a href="/Article/ArticleList?pageIndex=@(i-1)"><button> @i </button> </a>
+                        <li >
+                            <a href="/Article/ArticleList?pageIndex=@(i-1)"> @i </a>
                         </li>
                     }
                 }
@@ -80,14 +99,14 @@
                 {
                     if (i == ViewBag.PageIndex + 1)
                     {
-                        <li class="float-left" style="margin:5px">
-                            <a><button style="background-color:red"> @i </button>  </a>
+                        <li >
+                            <a> @i  </a>
                         </li>
                     }
                     else
                     {
-                        <li class="float-left" style="margin:5px">
-                            <a href="/Article/ArticleList?pageIndex=@(i-1)"><button> @i </button> </a>
+                        <li>
+                            <a href="/Article/ArticleList?pageIndex=@(i-1)"> @i</a>
                         </li>
                     }
 
@@ -100,18 +119,23 @@
                     if (i == ViewBag.PageIndex + 1)
                     {
                         <li class="float-left" style="margin:5px">
-                            <a href="#"><button style="background-color:red"> @i </button> </a>
+                            <a href="#"> @i</a>
                         </li>
                     }
                     else
                     {
-                        <li class="float-left" style="margin:5px">
-                            <a href="/Article/ArticleList?pageIndex=@(i-1)"><button> @i </button></a>
+                        <li>
+                            <a href="/Article/ArticleList?pageIndex=@(i-1)">@i</a>
                         </li>
                     }
                 }
             }
         }
-
+        <li>
+            <a> @(ViewBag.PageIndex+1)/@ViewBag.PageCount</a>
+        </li>
+   
     </ul>
-</section>
+    </div>
+ 
+</div>
