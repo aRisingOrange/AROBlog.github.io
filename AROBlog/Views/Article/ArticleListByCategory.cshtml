@@ -1,0 +1,148 @@
+﻿@using AROBlog.Models.BlogViewModels
+@model ArticleViewModel
+@{
+    ViewData["Title"] = "ArticleListByCategory";
+}
+
+<h2>ArticleListByCategory</h2>
+
+<div class="sidecategory">
+
+        <!-- --t是自定义属性，通过var函数可调用 -->
+
+        <li>
+            <a href="#">
+                <i class="fa fa-home" aria-hidden="true">全部</i>
+            </a>
+        </li>
+    @foreach(var category in Model.categoryDTOs)
+    {
+        <li>
+          <a href="">
+                <i class="fa fa-home" aria-hidden="true">@category.CategoryName</i>
+            </a>
+            <form asp-action="ArticleListByCategory" method="post">
+            <div class="form-group">
+                <input asp-for="categoryId" type="text" class="form-control" value="@category.Id"/>
+                <input type="submit" value="@category.CategoryName" class="btn btn-primary" />
+            </div>
+        </form>
+        </li>
+    }
+    
+</div>
+
+<div class="articlelist" >
+    @foreach (var item in Model.articleDTOs)
+    {<section class="article">
+        <div class="content">
+            <!--head-->
+            <div class="head">
+                <h3>@Html.DisplayFor(modelItem => item.Title)</h3>
+                <p>@Html.DisplayFor(modelItem=>item.CreateTime)</p>
+            </div>
+            <div class="body">
+                <article>
+                    @Html.DisplayFor(modelItem => item.Summary)
+                </article>
+            </div>
+            <div class="foot">
+                <button>详情</button>
+            </div>
+
+        </div>
+        </section>
+    }
+
+    <div class="pagebtn">
+   <ul class="pagerList">
+       <li> <a href="/Article/ArticleList?categoryId=@Model.categoryId& pageIndex=0">首页</a></li>
+        @if (ViewBag.PageCount <= 7)
+        {
+            // 数据实际页码数量小于等于可容纳页码的总量
+            for (int i = 1; i <= ViewBag.PageCount; i++)
+            {
+                if (i == ViewBag.PageIndex + 1)
+                {
+                    <li>
+                        <span>  @i </span>
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        <a href="/Article/ArticleList?pageIndex=@(i-1)">@i </a>
+                    </li>
+                }
+            }
+
+        }
+        else
+        {
+            // 数据实际页码数量大于可容纳页码的总量
+            if (ViewBag.PageIndex <= 7 / 2)
+            {
+
+                for (int i = 1; i <= 7; i++)
+                {
+                    if (i == ViewBag.PageIndex + 1)
+                    {
+                        <li>
+                            <span> @i </span>
+                        </li>
+                    }
+                    else
+                    {
+                        <li >
+                            <a href="/Article/ArticleList?pageIndex=@(i-1)"> @i </a>
+                        </li>
+                    }
+                }
+
+            }
+            else if ((ViewBag.PageCount - ViewBag.PageIndex - 1) <= 7 / 2)
+            {
+                for (int i = ViewBag.PageCount - 6; i <= ViewBag.PageCount; i++)
+                {
+                    if (i == ViewBag.PageIndex + 1)
+                    {
+                        <li >
+                            <a> @i  </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a href="/Article/ArticleList?pageIndex=@(i-1)"> @i</a>
+                        </li>
+                    }
+
+                }
+            }
+            else
+            {
+                for (int i = ViewBag.PageIndex - 7 / 2 + 1; i <= ViewBag.PageIndex + 7 / 2 + 1; i++)
+                {
+                    if (i == ViewBag.PageIndex + 1)
+                    {
+                        <li class="float-left" style="margin:5px">
+                            <a href="#"> @i</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a href="/Article/ArticleList?pageIndex=@(i-1)">@i</a>
+                        </li>
+                    }
+                }
+            }
+        }
+        <li id="now-all">
+            <a> @(ViewBag.PageIndex+1)/@ViewBag.PageCount</a>
+        </li>
+  
+    </ul>
+    </div>
+ 
+</div>

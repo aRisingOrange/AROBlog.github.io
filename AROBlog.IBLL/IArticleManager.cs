@@ -24,12 +24,13 @@ namespace AROBlog.IBLL
         /// </summary>
         /// <param name="userId"></param>
         /// <returns></returns>
-        Task<int> GetDataCount(Guid userId);
+        //Task<int> GetDataCount(Guid userId);
+        Task<int> GetDataCount(Guid categoryId);
         Task<int> GetDataCount();
 
         //Task<List<ArticleDTO>> GetAllArticlesByAccount(string account);
 
-        Task<List<ArticleDTO>> GetAllArticlesByCategoryId(Guid categoryId);
+        Task<List<ArticleDTO>> GetAllArticlesByCategoryId(Guid categoryId, int pageIndex, int pageSize);
 
         Task RemoveCategory(Guid id);
 

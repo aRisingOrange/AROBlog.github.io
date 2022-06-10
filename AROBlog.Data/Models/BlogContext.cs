@@ -18,12 +18,12 @@ namespace AROBlog.Data.Models
             dbContextOptionsBuilder.UseSqlServer(@"Data Source =MIGINA\SQLEXPRESS; Initial Catalog = BlogTestDb; Persist Security Info = True; User ID = sa; Password = 1246616521;");
         }
         /// <summary>
-        /// 关闭级联删除
+        /// 设置级联删除
         /// </summary>
         /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+            //关闭级联删除
             //var foreignKeys = modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()).Where(fk => fk.DeleteBehavior == DeleteBehavior.Cascade);
             //foreach (var fk in foreignKeys)
             //{
@@ -33,21 +33,23 @@ namespace AROBlog.Data.Models
                 .HasOne(c => c.User)
                 .WithMany(c => c.Categories)
                 .HasForeignKey(c => c.UserId)
-                .OnDelete(DeleteBehavior.ClientSetNull);
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Article>()
                 .HasOne(u=>u.User)
                 .WithMany(a=>a.Articles)
                 .HasForeignKey(a=>a.UserId)
-                .OnDelete(DeleteBehavior.ClientSetNull);
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<ArticleToCategory>()
-                .HasKey(e => new { e.CategoryId, e.ArticleId });
+                .HasKey(e => new { e.ArticleId, e.CategoryId });
+     
+
             modelBuilder.Entity<ArticleToCategory>()
                 .HasOne(a => a.Article)
                 .WithMany(atc => atc.ArticleToCategories)
                 .HasForeignKey(a => a.ArticleId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<ArticleToCategory>()
                 .HasOne(c => c.Category)

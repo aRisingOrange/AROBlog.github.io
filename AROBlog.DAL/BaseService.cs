@@ -33,6 +33,7 @@ namespace AROBlog.DAL
         /// <exception cref="NotImplementedException"></exception>
         public async Task RemoveAsync(Guid id, bool saved = true)
         {
+            
             _blogContext.ChangeTracker.AutoDetectChangesEnabled = false;
             var t = new T() { Id = id };
             _blogContext.Entry(t).State = EntityState.Deleted;
@@ -47,6 +48,7 @@ namespace AROBlog.DAL
         {
             await RemoveAsync(model.Id, saved);
         }
+       
         /// <summary>
         /// 查
         /// </summary>

@@ -57,10 +57,11 @@ namespace AROBlog.Data.Migrations
 
             modelBuilder.Entity("AROBlog.Data.Models.ArticleToCategory", b =>
                 {
-                    b.Property<Guid>("CategoryId")
+                    b.Property<Guid>("ArticleId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("ArticleId")
+                    b.Property<Guid>("CategoryId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreateTime")
@@ -72,9 +73,9 @@ namespace AROBlog.Data.Migrations
                     b.Property<bool>("IsRemoved")
                         .HasColumnType("bit");
 
-                    b.HasKey("CategoryId", "ArticleId");
+                    b.HasKey("ArticleId", "CategoryId");
 
-                    b.HasIndex("ArticleId");
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("ArticleToCategories");
                 });
@@ -172,6 +173,7 @@ namespace AROBlog.Data.Migrations
                     b.HasOne("AROBlog.Data.Models.User", "User")
                         .WithMany("Articles")
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("User");
@@ -182,7 +184,7 @@ namespace AROBlog.Data.Migrations
                     b.HasOne("AROBlog.Data.Models.Article", "Article")
                         .WithMany("ArticleToCategories")
                         .HasForeignKey("ArticleId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("AROBlog.Data.Models.Category", "Category")
@@ -201,6 +203,7 @@ namespace AROBlog.Data.Migrations
                     b.HasOne("AROBlog.Data.Models.User", "User")
                         .WithMany("Categories")
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("User");

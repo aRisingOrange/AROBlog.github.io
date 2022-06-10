@@ -42,7 +42,7 @@ namespace AROBlog.BLL
                         await articleToCategorySvc.CreateAsync(new ArticleToCategory()
                         {
                             ArticleId = articleId,
-                            CategoryId = categoryId
+                            CategoryId = categoryId,
                         }, saved: false);
                     }
                     await articleToCategorySvc.Save();
@@ -232,9 +232,28 @@ namespace AROBlog.BLL
 
             }
         }
-        public Task<List<ArticleDTO>> GetAllArticlesByCategoryId(Guid categoryId)
+        public async Task<List<ArticleDTO>> GetAllArticlesByCategoryId(Guid categoryId, int pageIndex, int pageSize)
         {
-            throw new NotImplementedException();
+           using(var articleToCategoryService = new ArticleToCategoryService())
+            {
+                var articles=await articleToCategoryService.GetAllByPageOrderAsync(pageSize, pageIndex, false)
+                    .Include(m => m.Article).Where(m=>m.CategoryId==categoryId)
+                    .Select(m=>new ArticleDTO()
+                    {
+                        Id = m.ArticleId,
+                        CreateTime = m.CreateTime,
+                    }).ToListAsync();
+                using (IArticleService articleService = new ArticleService())
+                {
+                    foreach (var article in articles)
+                    {
+                        var cates = await articleService.GetAllAsync().Include(m=>m.ArticleToCategories).Where(m => m.Id == article.Id).ToListAsync();
+                        article.Title = cates.Select(m=>m.Title).First();
+                        article.Summary = cates.Select(m => m.Summary).First();
+                    }
+                    return articles;
+                }
+            }
         }
         /// <summary>
         /// 根据用户id获取所有分类
@@ -265,18 +284,29 @@ namespace AROBlog.BLL
         }
 
 
-        /// <summary>
-        /// 获取本用户发布文章的列表总页数
-        /// </summary>
-        /// <param name="userId"></param>
-        /// <returns></returns>
-        public async Task<int> GetDataCount(Guid userId)
+        ///// <summary>
+        ///// 获取本用户发布文章的列表总页数
+        ///// </summary>
+        ///// <param name="userId"></param>
+        ///// <returns></returns>
+        //public async Task<int> GetDataCount(Guid userId)
+        //{
+        //    using (IDAL.IArticleService articleService = new ArticleService())
+        //    {
+        //        return await articleService.GetAllAsync().CountAsync(m => m.UserId == userId);
+        //    }
+        //}
+        public async Task<int> GetDataCount(Guid categoryId)
         {
-            using (IDAL.IArticleService articleService = new ArticleService())
+            using (IArticleToCategoryService articleToCategoryService = new ArticleToCategoryService())
             {
-                return await articleService.GetAllAsync().CountAsync(m => m.UserId == userId);
+                return await articleToCategoryService.GetAllAsync().CountAsync(m => m.CategoryId == categoryId);
             }
         }
+        /// <summary>
+        /// 获取所有的文章总数
+        /// </summary>
+        /// <returns></returns>
         public async Task<int> GetDataCount()
         {
             using (IDAL.IArticleService articleService = new ArticleService())
@@ -348,7 +378,16 @@ namespace AROBlog.BLL
         /// <param name="articleId"></param>
         /// <returns></returns>
         public async Task RemoveArticle(Guid articleId)
-        {
+        { 
+            //using (IArticleToCategoryService articleToCategoryService = new ArticleToCategoryService())
+            //{
+            //    //var data = await articleToCategoryService.GetAllAsync()
+            //    //   .Include(m => m.Category)
+            //    //   .Where(m => m.ArticleId == articleId)
+            //    //   .FirstAsync();
+            //    await articleToCategoryService.RemoveAsync(articleId, true);
+            //}
+
             using (IArticleService articleService = new ArticleService())
             {
                 var data = await articleService.GetAllAsync()
@@ -360,7 +399,9 @@ namespace AROBlog.BLL
                     }).FirstAsync();
                 System.IO.File.Delete(data.StoragePath);
                 await articleService.RemoveAsync(articleId, true);
+             
             }
+           
         }
         /// <summary>
         /// 根据类别id删除类别

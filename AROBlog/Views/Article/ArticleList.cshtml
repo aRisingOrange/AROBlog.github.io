@@ -17,9 +17,10 @@
     @foreach(var category in Model.categoryDTOs)
     {
         <li>
-          <a href="#">
+          <a href="/Article/ArticleList?pageIndex=0&categoryId=@category.Id">
                 <i class="fa fa-home" aria-hidden="true">@category.CategoryName</i>
             </a>
+         
         </li>
     }
     
@@ -49,10 +50,13 @@
 
     <div class="pagebtn">
    <ul class="pagerList">
-       <li> <a href="/Article/ArticleList?pageIndex=0">首页</a></li>
+       @{
+           var categoryId = Model.categoryId;}
+       <li> <a href="/Article/ArticleList?pageIndex=0&categoryId=@categoryId">首页</a></li>
         @if (ViewBag.PageCount <= 7)
         {
-            // 数据实际页码数量小于等于可容纳页码的总量
+              
+                // 数据实际页码数量小于等于可容纳页码的总量
             for (int i = 1; i <= ViewBag.PageCount; i++)
             {
                 if (i == ViewBag.PageIndex + 1)
@@ -64,7 +68,7 @@
                 else
                 {
                     <li>
-                        <a href="/Article/ArticleList?pageIndex=@(i-1)">@i </a>
+                        <a href="/Article/ArticleList?pageIndex=@(i-1)&categoryId=@categoryId">@i </a>
                     </li>
                 }
             }
@@ -131,10 +135,10 @@
                 }
             }
         }
-        <li>
+        <li id="now-all">
             <a> @(ViewBag.PageIndex+1)/@ViewBag.PageCount</a>
         </li>
-   
+  
     </ul>
     </div>
  

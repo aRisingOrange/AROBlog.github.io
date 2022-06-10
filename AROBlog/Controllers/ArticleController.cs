@@ -61,7 +61,7 @@ namespace AROBlog.Controllers
         /// <param name="pageSize"></param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<ActionResult> ArticleListAdmin(int pageIndex = 0, int pageSize = 1)
+        public async Task<ActionResult> ArticleListAdmin(int pageIndex = 0, int pageSize = 7)
         {
 
             //需要给页面前端 总页码数，当前页码，可显示的总页码数量
@@ -81,24 +81,56 @@ namespace AROBlog.Controllers
         /// <param name="pageIndex"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
+        //[HttpGet]
+        //[AllowAnonymous]
+        //public async Task<ActionResult> ArticleList(int pageIndex = 0, int pageSize = 7)
+        //{
+        //    ArticleViewModel model = new ArticleViewModel();
+        //    //需要给页面前端 总页码数，当前页码，可显示的总页码数量
+        //    var articleMgr = new ArticleManager();
+
+        //    var articles = await articleMgr.GetAllArticles(pageIndex, pageSize);
+        //    var dataCount = await articleMgr.GetDataCount();
+        //    var categories = await articleMgr.GetAllCategories();
+        //    ViewBag.PageCount = dataCount % pageSize == 0 ? dataCount / pageSize : dataCount / pageSize + 1;
+        //    ViewBag.PageIndex = pageIndex;
+
+        //    model.articleDTOs = articles; 
+        //    model.categoryDTOs = categories;
+        //    return View(model);
+        //}
         [HttpGet]
         [AllowAnonymous]
-        public async Task<ActionResult> ArticleList(int pageIndex = 0, int pageSize = 7)
+        public async Task<ActionResult> ArticleList(Guid categoryId, int pageIndex = 0, int pageSize = 7)
         {
+
             ArticleViewModel model = new ArticleViewModel();
             //需要给页面前端 总页码数，当前页码，可显示的总页码数量
             var articleMgr = new ArticleManager();
-            var userid = HttpContext.Session.GetString("userid_session");
-            Guid guid = new Guid(userid);
-            
-            var articles = await articleMgr.GetAllArticles( pageIndex, pageSize);
-            var dataCount = await articleMgr.GetDataCount(guid);
+            model.categoryId = categoryId;
+            if(categoryId == Guid.Empty)
+            {
+                var articles = await articleMgr.GetAllArticles(pageIndex, pageSize);
+                var dataCount = await articleMgr.GetDataCount();
+                var categories = await articleMgr.GetAllCategories();
+                ViewBag.PageCount = dataCount % pageSize == 0 ? dataCount / pageSize : dataCount / pageSize + 1;
+                ViewBag.PageIndex = pageIndex;
+
+                model.articleDTOs = articles;
+                model.categoryDTOs = categories;
+            }
+            else
+            {
+            var articles = await articleMgr.GetAllArticlesByCategoryId(categoryId, pageIndex, pageSize);
+            var dataCount = await articleMgr.GetDataCount(categoryId);
             var categories = await articleMgr.GetAllCategories();
             ViewBag.PageCount = dataCount % pageSize == 0 ? dataCount / pageSize : dataCount / pageSize + 1;
             ViewBag.PageIndex = pageIndex;
-
             model.articleDTOs = articles;
             model.categoryDTOs = categories;
+            }
+            
+
             return View(model);
         }
         /// <summary>
@@ -123,7 +155,7 @@ namespace AROBlog.Controllers
         {
             IArticleManager articleManager = new ArticleManager();
             await articleManager.RemoveArticle(id);
-            return RedirectToAction("ArticleList");
+            return RedirectToAction("ArticleListAdmin");
         }
         #endregion
         #region Category分类
@@ -185,8 +217,8 @@ namespace AROBlog.Controllers
             var data = await articleManager.GetOneCategoryById(id);
             return View(new EditCategoryViewModel()
             {
-                CategoryId=data.Id,
-                CategoryName=data.CategoryName
+                CategoryId = data.Id,
+                CategoryName = data.CategoryName
             });
         }
         [HttpPost]

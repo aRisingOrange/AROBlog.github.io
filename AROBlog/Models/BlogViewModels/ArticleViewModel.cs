@@ -6,5 +6,6 @@ namespace AROBlog.Models.BlogViewModels
     {
         public List<ArticleDTO> articleDTOs { get; set; }
         public List<CategoryDTO> categoryDTOs { get; set; }
+        public Guid categoryId { get; set; }
     }
 }

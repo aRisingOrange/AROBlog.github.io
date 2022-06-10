@@ -31,6 +31,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aWNsZVxBcnRpY2xlTGlzdEFkbWluLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Documents/Codes/test/BlogTest/AROBlog/Views/Article/ArticleListByCategory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aWNsZVxBcnRpY2xlTGlzdEJ5Q2F0ZWdvcnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Documents/Codes/test/BlogTest/AROBlog/Views/Article/CategoryList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aWNsZVxDYXRlZ29yeUxpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
